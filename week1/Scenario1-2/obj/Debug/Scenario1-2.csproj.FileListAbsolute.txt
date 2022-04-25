@@ -1,0 +1,8 @@
+C:\Users\stefa\source\repos\week1\Scenario1-2\bin\Debug\Scenario1-2.exe.config
+C:\Users\stefa\source\repos\week1\Scenario1-2\bin\Debug\Scenario1-2.exe
+C:\Users\stefa\source\repos\week1\Scenario1-2\bin\Debug\Scenario1-2.pdb
+C:\Users\stefa\source\repos\week1\Scenario1-2\obj\Debug\Scenario1-2.csproj.AssemblyReference.cache
+C:\Users\stefa\source\repos\week1\Scenario1-2\obj\Debug\Scenario1-2.csproj.SuggestedBindingRedirects.cache
+C:\Users\stefa\source\repos\week1\Scenario1-2\obj\Debug\Scenario1-2.csproj.CoreCompileInputs.cache
+C:\Users\stefa\source\repos\week1\Scenario1-2\obj\Debug\Scenario1-2.exe
+C:\Users\stefa\source\repos\week1\Scenario1-2\obj\Debug\Scenario1-2.pdb
