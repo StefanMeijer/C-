@@ -1,0 +1,8 @@
+C:\Users\stefa\source\repos\week2\Program\bin\Debug\Program.exe.config
+C:\Users\stefa\source\repos\week2\Program\bin\Debug\Program.exe
+C:\Users\stefa\source\repos\week2\Program\bin\Debug\Program.pdb
+C:\Users\stefa\source\repos\week2\Program\obj\Debug\Program.csproj.AssemblyReference.cache
+C:\Users\stefa\source\repos\week2\Program\obj\Debug\Program.csproj.SuggestedBindingRedirects.cache
+C:\Users\stefa\source\repos\week2\Program\obj\Debug\Program.csproj.CoreCompileInputs.cache
+C:\Users\stefa\source\repos\week2\Program\obj\Debug\Program.exe
+C:\Users\stefa\source\repos\week2\Program\obj\Debug\Program.pdb
