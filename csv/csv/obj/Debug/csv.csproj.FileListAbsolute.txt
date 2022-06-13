@@ -1,0 +1,11 @@
+C:\Users\stefa\source\repos\csv\csv\bin\Debug\csv.exe.config
+C:\Users\stefa\source\repos\csv\csv\bin\Debug\csv.exe
+C:\Users\stefa\source\repos\csv\csv\bin\Debug\csv.pdb
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.csproj.AssemblyReference.cache
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.csproj.SuggestedBindingRedirects.cache
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.Form1.resources
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.Properties.Resources.resources
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.csproj.GenerateResource.cache
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.csproj.CoreCompileInputs.cache
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.exe
+C:\Users\stefa\source\repos\csv\csv\obj\Debug\csv.pdb

@@ -1,0 +1,11 @@
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\bin\Debug\Scenario5-1.exe.config
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\bin\Debug\Scenario5-1.exe
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\bin\Debug\Scenario5-1.pdb
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\Scenario5-1.exe
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\Scenario5-1.pdb
+C:\Users\stefa\source\repos\week4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
