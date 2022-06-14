@@ -1,0 +1,13 @@
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\Verhuur van speedboten.exe.config
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\Verhuur van speedboten.exe
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\Verhuur van speedboten.pdb
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.csproj.AssemblyReference.cache
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.csproj.SuggestedBindingRedirects.cache
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur_van_speedboten.Form1.resources
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur_van_speedboten.Properties.Resources.resources
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.csproj.GenerateResource.cache
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.csproj.CoreCompileInputs.cache
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.exe
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.pdb
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\bootverhuur.mdf
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\bootverhuur_log.ldf
