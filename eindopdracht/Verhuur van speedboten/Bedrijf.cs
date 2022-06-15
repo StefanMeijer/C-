@@ -56,28 +56,26 @@ namespace Verhuur_van_speedboten
 
             if (dr.HasRows)
             {
-                int i = 0;
                 while (dr.Read())
                 {
-                    //Moet bij speedboten tablad komen <----------------->
-                    //speedbotenlabel.Text
-                    //+= "Nummer: " + dr.GetValue(0).ToString()
-                    //+ "   Gewicht: " + dr.GetValue(1).ToString()
-                    //+ "   Pk's: " + dr.GetValue(2).ToString()
-                    //+ "   Lengte: " + dr.GetValue(3).ToString()
-                    //+ "   Huurprijs: " + dr.GetValue(4).ToString()
-                    //+ "   Schade: " + dr.GetValue(5).ToString()
-                    //+ "\n";
-
+                    //Get boolean value from databsae
+                    Boolean schade = false;
+                    if (dr.GetValue(5).ToString() == "1")
+                    {
+                        schade = true;
+                    }
+                    
+                    //Making speedboot object
                     Speedboot speedboot = new Speedboot(
                         int.Parse(dr.GetValue(0).ToString()),
                         double.Parse(dr.GetValue(1).ToString()),
                         int.Parse(dr.GetValue(2).ToString()),
                         double.Parse(dr.GetValue(3).ToString()),
                         double.Parse(dr.GetValue(4).ToString()),
-                        false
+                        schade
                     );
 
+                    //Adding speedboten to list of speedboten
                     this.speedboten.Add(speedboot);
                 }
             }

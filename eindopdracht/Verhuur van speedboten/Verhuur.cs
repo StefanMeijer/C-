@@ -8,17 +8,19 @@ namespace Verhuur_van_speedboten
 {
     public class Verhuur
     {
-        Speedboot boot { get; set; }
-        DateTime aanvangstijd { get; set; } 
-        DateTime eindtijd { get; set; } 
-        int verbruikteLiters { get; set; }
+        public Speedboot boot { get; set; }
+        public DateTime aanvangstijd { get; set; }
+        public DateTime eindtijd { get; set; }
+        public int verbruikteLiters { get; set; }
+        public DateTime verhuurDatum { get; set; }
 
-        public Verhuur (Speedboot boot, DateTime aanvangstijd, DateTime eindtijd, int verbruikteLiters)
+        public Verhuur (Speedboot boot, DateTime aanvangstijd, DateTime eindtijd, int verbruikteLiters, DateTime verhuurDatum)
         {
             this.boot = boot;   
             this.aanvangstijd = aanvangstijd;
             this.eindtijd = eindtijd;   
             this.verbruikteLiters = verbruikteLiters;
+            this.verhuurDatum = verhuurDatum;
         }
 
         public double berekenOmzet ()
