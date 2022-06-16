@@ -366,7 +366,7 @@
             this.headlabel1.BackColor = System.Drawing.Color.Thistle;
             this.headlabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headlabel1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.headlabel1.Location = new System.Drawing.Point(7, 3);
+            this.headlabel1.Location = new System.Drawing.Point(3, 3);
             this.headlabel1.Name = "headlabel1";
             this.headlabel1.Size = new System.Drawing.Size(146, 29);
             this.headlabel1.TabIndex = 0;
@@ -397,7 +397,7 @@
             this.beschikbareBoten.AutoSize = true;
             this.beschikbareBoten.BackColor = System.Drawing.Color.SkyBlue;
             this.beschikbareBoten.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beschikbareBoten.Location = new System.Drawing.Point(159, 7);
+            this.beschikbareBoten.Location = new System.Drawing.Point(155, 7);
             this.beschikbareBoten.Name = "beschikbareBoten";
             this.beschikbareBoten.Size = new System.Drawing.Size(195, 24);
             this.beschikbareBoten.TabIndex = 21;

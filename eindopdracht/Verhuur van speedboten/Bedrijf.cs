@@ -21,6 +21,7 @@ namespace Verhuur_van_speedboten
             this.naam = "database naam";
 
             loadSpeedboten();
+            loadVerhuurden();
         }
 
         public double totaleOmzet ()
@@ -82,6 +83,39 @@ namespace Verhuur_van_speedboten
             else
             {
                 MessageBox.Show("Geen speedboten gevonden!");
+            }
+
+            dr.Close();
+        }
+
+        private void loadVerhuurden()
+        {
+            string query = @"SELECT id, boot, aanvangstijd, eindtijd, verbruikteliters, verhuurdatum FROM verhuur";
+            
+            SqlDataReader dr = new SqlCommand(query, Database.openSqlConn()).ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    
+                    //Making verhuur object
+                    Verhuur verhuur = new Verhuur(
+                        int.Parse(dr.GetValue(0).ToString()),
+                        int.Parse(dr.GetValue(1).ToString()),
+                        DateTime.ParseExact(dr.GetValue(2).ToString(), "HH:mm", null),
+                        DateTime.ParseExact(dr.GetValue(3).ToString(), "HH:mm", null),
+                        int.Parse(dr.GetValue(4).ToString()),
+                        DateTime.Parse(dr.GetValue(5).ToString())
+                    );
+
+                    //Adding verhuurden to list of verhuurden
+                    this.verhuurden.Add(verhuur);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Geen verhuurders gevonden!");
             }
 
             dr.Close();

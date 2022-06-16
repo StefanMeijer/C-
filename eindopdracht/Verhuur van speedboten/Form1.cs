@@ -85,7 +85,7 @@ namespace Verhuur_van_speedboten
                         foreach (Verhuur verhuurden in bedrijf.verhuurden)
                         {
                             //Check if 
-                            if (verhuurden.boot.nummer.ToString() == selectedBoot)
+                            if (verhuurden.bootnummer.ToString() == selectedBoot)
                             {
                                 //Check if rented boat is already rented today
                                 if (verhuurden.verhuurDatum == rentDate)
@@ -122,6 +122,7 @@ namespace Verhuur_van_speedboten
                         {
                             setDamage(selectedBoot);
                         }
+                        addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
                     }
                 }
                 else
@@ -155,14 +156,56 @@ namespace Verhuur_van_speedboten
 
         private void addRental (string selectedBoot, string startTime, string endTime, string usedLiters, DateTime rentDate)
         {
-            //selectedboot = get speedboot object
-            //starttime = put to datetime
-            //endTime = put to datetime
+            //selectedboot = put to int
+            //starttime = keep string
+            //endTime = keep string
             //usedLiters = put to datetime
+            //rentDate = keep datetime
 
+            int nummer = 0;
+
+            //Get latest id from db and then lastId++
+            string query = @"SELECT MAX(id) FROM verhuur";
+
+            SqlDataReader dr = new SqlCommand(query, Database.openSqlConn()).ExecuteReader();
+            while (dr.Read())
+            {
+                if (dr.GetValue(0).ToString() != "")
+                {
+                    nummer += int.Parse(dr.GetValue(0).ToString());
+                }
+                MessageBox.Show(dr.GetValue(0).ToString());
+            }
+
+            MessageBox.Show(nummer.ToString());
             //Add to list - 1
-            //Add to database - 2
-            MessageBox.Show("Boot verhuurd - werkt niet");
+            Verhuur verhuur = new Verhuur(
+                nummer++,
+                int.Parse(selectedBoot),
+                DateTime.ParseExact(startTime, "HH:mm", null),
+                DateTime.ParseExact(endTime, "HH:mm", null),
+                int.Parse(usedLiters),
+                rentDate
+            );
+
+            //Adding rental to list of rentals
+            bedrijf.verhuurden.Add(verhuur);
+
+            //Adding rental to DB
+            string insertQuery = @"INSERT INTO verhuur (boot, aanvangstijd, eindtijd, verbruikteliters, verhuurdatum)
+                                   VALUES (@boot, @aanvangstijd, @eindtijd, @verbruikteliters, @verhuurdatum)";
+
+            SqlCommand commando = new SqlCommand(insertQuery, Database.openSqlConn());
+
+            commando.Parameters.AddWithValue("@boot", int.Parse(selectedBoot));
+            commando.Parameters.AddWithValue("@aanvangstijd", DateTime.ParseExact(startTime, "HH:mm", null));
+            commando.Parameters.AddWithValue("@eindtijd", DateTime.ParseExact(endTime, "HH:mm", null));
+            commando.Parameters.AddWithValue("@verbruikteliters", int.Parse(usedLiters));
+            commando.Parameters.AddWithValue("@verhuurdatum", DateTime.Now);
+
+            commando.ExecuteNonQuery();
+
+            MessageBox.Show("Boot verhuurd");
         }
     }
 }

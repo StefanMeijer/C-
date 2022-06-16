@@ -8,15 +8,17 @@ namespace Verhuur_van_speedboten
 {
     public class Verhuur
     {
-        public Speedboot boot { get; set; }
+        public int id { get; set; }
+        public int bootnummer { get; set; }
         public DateTime aanvangstijd { get; set; }
         public DateTime eindtijd { get; set; }
         public int verbruikteLiters { get; set; }
         public DateTime verhuurDatum { get; set; }
 
-        public Verhuur (Speedboot boot, DateTime aanvangstijd, DateTime eindtijd, int verbruikteLiters, DateTime verhuurDatum)
+        public Verhuur (int id, int bootnummer, DateTime aanvangstijd, DateTime eindtijd, int verbruikteLiters, DateTime verhuurDatum)
         {
-            this.boot = boot;   
+            this.id = id;
+            this.bootnummer = bootnummer;   
             this.aanvangstijd = aanvangstijd;
             this.eindtijd = eindtijd;   
             this.verbruikteLiters = verbruikteLiters;
