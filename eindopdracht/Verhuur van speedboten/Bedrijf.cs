@@ -18,7 +18,8 @@ namespace Verhuur_van_speedboten
         {
             this.speedboten = new List<Speedboot>();
             this.verhuurden = new List<Verhuur>();
-            this.naam = "database naam";
+
+            this.naam = getCompanyName();
 
             loadSpeedboten();
             loadVerhuurden();
@@ -26,27 +27,112 @@ namespace Verhuur_van_speedboten
 
         public double totaleOmzet ()
         {
-            return 0.0;
+            //Loop over alle, tel alle omzet op in één variabele en laat die zien
+            double total = 0.0;
+
+            foreach (Verhuur verhuurden in this.verhuurden)
+            {
+                double omzet = total + verhuurden.berekenOmzet();
+                total = omzet;
+            }
+
+            return total;
         }
 
-        public DateTime totaleVerhuurtijd ()
+        public TimeSpan totaleVerhuurtijd ()
         {
-            DateTime now = DateTime.Now;
-            return now;
+            //Loop over alle, tel alle verhuurtijd op in één variabele en laat die zien
+            double totaleVerhuurtijd = 0.0;
+
+            foreach (Verhuur verhuurden in this.verhuurden)
+            {
+                double verhuurtijd = totaleVerhuurtijd + verhuurden.berekenVerhuurtijd();
+                totaleVerhuurtijd = verhuurtijd;
+            }
+
+            TimeSpan ts = TimeSpan.FromMinutes(totaleVerhuurtijd);
+
+            return ts;
         }
 
         public int hoogsteBrandstofVerbruik ()
         {
-            return 0;
+            //Loop over alle, zet de gene met hoogste double in een variabele, zet die boot nummer in een variabele
+            int bootnummer = 0;
+            double oldBrandstofverbruik = 0.0;
+
+            foreach (Verhuur verhuurden in this.verhuurden)
+            {
+                double brandstofverbruik = verhuurden.berekenBrandstofverbruik();
+                if (brandstofverbruik > oldBrandstofverbruik)
+                {
+                    oldBrandstofverbruik = brandstofverbruik;
+                    bootnummer = verhuurden.bootnummer;
+                }
+            }
+            return bootnummer;
         }
 
         public double percentageSchadeBoten () {
-            return 0.0;
+            //Loop over alle, gebruikt .count functie op de list & zet alle boten die schade hebben ook in een int
+            //Vervolgens kun je percentage berekenen 100 : Het aantal boten x de boten met scahde
+            int totaleSpeedboten = this.speedboten.Count();
+            int totaleSchadeBoten = 0;
+
+            foreach (Speedboot speedboten in this.speedboten)
+            {
+                if (speedboten.schade == true)
+                {
+                    totaleSchadeBoten++;
+                }
+            }
+
+            double berekening = 100 / totaleSpeedboten * totaleSchadeBoten;
+            return berekening;
         }
 
         public Speedboot korsteVerhuurd ()
         {
-            return null;
+            //Loop over alle, zet de gene met laagste double in een variabele, zet die boot nummer in een variabele
+            //Loop over alle speedboten, return de speedboot met hetzelfde nummer die opgeslagen staat
+            Speedboot korsteVerhuurd = null;
+            double verhuurtijd = 0.0;
+
+            foreach (Verhuur verhuurden in this.verhuurden)
+            {
+                if (verhuurtijd == 0.0)
+                {
+                    verhuurtijd = verhuurden.berekenVerhuurtijd();
+                    int speedbootnummmer = verhuurden.bootnummer;
+
+                    foreach (Speedboot speedboten in this.speedboten)
+                    {
+                        if (speedboten.nummer == speedbootnummmer)
+                        {
+                            korsteVerhuurd = speedboten;
+                        }
+                    }
+
+                } else
+                {
+                    if (verhuurden.berekenVerhuurtijd() < verhuurtijd)
+                    {
+                        verhuurtijd = verhuurden.berekenVerhuurtijd();
+                        int speedbootnummmer = verhuurden.bootnummer;
+
+                        foreach (Speedboot speedboten in this.speedboten)
+                        {
+                            if (speedboten.nummer == speedbootnummmer)
+                            {
+                                korsteVerhuurd = speedboten;
+                            }
+                        }
+                    }
+                }
+                
+            }
+
+            return korsteVerhuurd;
         }
 
         private void loadSpeedboten()
@@ -119,6 +205,27 @@ namespace Verhuur_van_speedboten
             }
 
             dr.Close();
+        }
+
+        private string getCompanyName ()
+        {
+            string query = @"SELECT bedrijfsnaam FROM bedrijf";
+
+            SqlDataReader dr = new SqlCommand(query, Database.openSqlConn()).ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    return dr.GetValue(0).ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Geen bedrijf gevonden");
+            }
+
+            return "";
         }
     }
 }

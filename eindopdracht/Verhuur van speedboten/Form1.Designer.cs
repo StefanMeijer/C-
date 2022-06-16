@@ -35,11 +35,11 @@
             this.tableAdapterManager = new Verhuur_van_speedboten.DatabaseDataSetTableAdapters.TableAdapterManager();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.korstVerhuurdeLabel = new System.Windows.Forms.Label();
+            this.percentageSchadeLabel = new System.Windows.Forms.Label();
+            this.hoogstebrandstofLabel = new System.Windows.Forms.Label();
+            this.verhuurtijdLabel = new System.Windows.Forms.Label();
+            this.omzetLabel = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@
             this.beschikbareBoten = new System.Windows.Forms.Label();
             this.speedbotenlabel = new System.Windows.Forms.Label();
             this.headlabel1 = new System.Windows.Forms.Label();
+            this.bedrijfLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bedrijfBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -105,11 +106,12 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.bedrijfLabel);
+            this.tabPage1.Controls.Add(this.korstVerhuurdeLabel);
+            this.tabPage1.Controls.Add(this.percentageSchadeLabel);
+            this.tabPage1.Controls.Add(this.hoogstebrandstofLabel);
+            this.tabPage1.Controls.Add(this.verhuurtijdLabel);
+            this.tabPage1.Controls.Add(this.omzetLabel);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button3);
@@ -124,50 +126,50 @@
             this.tabPage1.Text = "Bedrijf";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // korstVerhuurdeLabel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(183, 165);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(27, 13);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "N/A";
+            this.korstVerhuurdeLabel.AutoSize = true;
+            this.korstVerhuurdeLabel.Location = new System.Drawing.Point(183, 165);
+            this.korstVerhuurdeLabel.Name = "korstVerhuurdeLabel";
+            this.korstVerhuurdeLabel.Size = new System.Drawing.Size(72, 13);
+            this.korstVerhuurdeLabel.TabIndex = 19;
+            this.korstVerhuurdeLabel.Text = "Bootnummer: ";
             // 
-            // label12
+            // percentageSchadeLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(183, 136);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(21, 13);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "0%";
+            this.percentageSchadeLabel.AutoSize = true;
+            this.percentageSchadeLabel.Location = new System.Drawing.Point(183, 136);
+            this.percentageSchadeLabel.Name = "percentageSchadeLabel";
+            this.percentageSchadeLabel.Size = new System.Drawing.Size(21, 13);
+            this.percentageSchadeLabel.TabIndex = 18;
+            this.percentageSchadeLabel.Text = "0%";
             // 
-            // label11
+            // hoogstebrandstofLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(223, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 13);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "N/A";
+            this.hoogstebrandstofLabel.AutoSize = true;
+            this.hoogstebrandstofLabel.Location = new System.Drawing.Point(223, 107);
+            this.hoogstebrandstofLabel.Name = "hoogstebrandstofLabel";
+            this.hoogstebrandstofLabel.Size = new System.Drawing.Size(72, 13);
+            this.hoogstebrandstofLabel.TabIndex = 17;
+            this.hoogstebrandstofLabel.Text = "Bootnummer: ";
             // 
-            // label10
+            // verhuurtijdLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(183, 78);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "00:00";
+            this.verhuurtijdLabel.AutoSize = true;
+            this.verhuurtijdLabel.Location = new System.Drawing.Point(183, 78);
+            this.verhuurtijdLabel.Name = "verhuurtijdLabel";
+            this.verhuurtijdLabel.Size = new System.Drawing.Size(34, 13);
+            this.verhuurtijdLabel.TabIndex = 16;
+            this.verhuurtijdLabel.Text = "00:00";
             // 
-            // label9
+            // omzetLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(183, 49);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(13, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "0";
+            this.omzetLabel.AutoSize = true;
+            this.omzetLabel.Location = new System.Drawing.Point(183, 49);
+            this.omzetLabel.Name = "omzetLabel";
+            this.omzetLabel.Size = new System.Drawing.Size(13, 13);
+            this.omzetLabel.TabIndex = 15;
+            this.omzetLabel.Text = "0";
             // 
             // button5
             // 
@@ -419,6 +421,17 @@
             this.headlabel1.TabIndex = 0;
             this.headlabel1.Text = "Speedboten";
             // 
+            // bedrijfLabel
+            // 
+            this.bedrijfLabel.AutoSize = true;
+            this.bedrijfLabel.BackColor = System.Drawing.Color.SkyBlue;
+            this.bedrijfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bedrijfLabel.Location = new System.Drawing.Point(92, 7);
+            this.bedrijfLabel.Name = "bedrijfLabel";
+            this.bedrijfLabel.Size = new System.Drawing.Size(130, 24);
+            this.bedrijfLabel.TabIndex = 24;
+            this.bedrijfLabel.Text = "Bedrijfsnaam";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,11 +476,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox eindtijd;
         private System.Windows.Forms.TextBox aanvangstijd;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label korstVerhuurdeLabel;
+        private System.Windows.Forms.Label percentageSchadeLabel;
+        private System.Windows.Forms.Label hoogstebrandstofLabel;
+        private System.Windows.Forms.Label verhuurtijdLabel;
+        private System.Windows.Forms.Label omzetLabel;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -478,6 +491,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label verhuurd;
         private System.Windows.Forms.Label beschikbareBoten;
+        private System.Windows.Forms.Label bedrijfLabel;
     }
 }
 
