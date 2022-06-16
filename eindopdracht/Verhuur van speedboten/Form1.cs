@@ -92,6 +92,8 @@ namespace Verhuur_van_speedboten
                 string usedLiters = verbruikteliters.Text.ToString();
                 string schade = schadeComboBox.SelectedItem.ToString();
                 DateTime rentDate = DateTime.Now;
+                TimeSpan checkTimeSpan;
+                int checkInt;
 
                 //Check data
                 if (
@@ -99,13 +101,18 @@ namespace Verhuur_van_speedboten
                     !String.IsNullOrEmpty(startTime) &&
                     !String.IsNullOrEmpty(endTime) &&
                     !String.IsNullOrEmpty(usedLiters) &&
-                    !String.IsNullOrEmpty(schade)
+                    int.TryParse(usedLiters, out checkInt) &&
+                    !String.IsNullOrEmpty(schade) &&
+                    TimeSpan.TryParse(startTime, out checkTimeSpan) && //check if valid format HH:mm
+                    TimeSpan.TryParse(endTime, out checkTimeSpan) //check if valid format HH:mm
                     )
                 {
                     if (bedrijf.verhuurden.Count > 0)
                     {
+                        int i = 0;
                         foreach (Verhuur verhuurden in bedrijf.verhuurden)
                         {
+                            
                             //Check if bootnummer is equal to selected bootnummer
                             if (verhuurden.bootnummer.ToString() == selectedBoot)
                             {
@@ -127,20 +134,27 @@ namespace Verhuur_van_speedboten
                                     addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
                                     break;
                                 }
-                            }
-                            else
+                            } else
                             {
-                                if (schade == "true")
+                                i++;
+                                //Check if loop been through all object in verhuurden list
+                                if (i > bedrijf.verhuurden.Count)
                                 {
-                                    setDamage(selectedBoot);
+                                    if (schade == "true")
+                                    {
+                                        setDamage(selectedBoot);
+                                    }
+
+                                    addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
+                                    break;
                                 }
-                                addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
-                                break;
                             }
                         }
                     }
                     else
                     {
+
+                        MessageBox.Show("als je hier komt dan is er seirue wat mis"); //test showbox
                         if (schade == "true")
                         {
                             setDamage(selectedBoot);
