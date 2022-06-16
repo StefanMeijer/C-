@@ -24,7 +24,7 @@ namespace Verhuur_van_speedboten
 
             //label3.Text = bedrijf.naam; // Zet naam van het bedrijf in label
             beschikbareBoten.Text += bedrijf.speedboten.Count.ToString(); //Om te kijken hoeveel boten er in de list zitten
-            verhuurd.Text += bedrijf.verhuurden.Count.ToString();
+            verhuurd.Text += bedrijf.verhuurden.Count.ToString(); //Om te kijken hoeveel verhuurden er zijn
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Verhuur_van_speedboten
 
         private void verhuurBootButton_Click(object sender, EventArgs e)
         {
-            if (schadeComboBox.SelectedIndex == -1 && botenComboLijst.SelectedIndex == -1)
+            if (schadeComboBox.SelectedIndex == -1 || botenComboLijst.SelectedIndex == -1)
             {
                 MessageBox.Show("Vul alle velden in!");
             }
@@ -69,9 +69,9 @@ namespace Verhuur_van_speedboten
                 string startTime = aanvangstijd.Text.ToString();
                 string endTime = eindtijd.Text.ToString();
                 string usedLiters = verbruikteliters.Text.ToString();
-
                 string schade = schadeComboBox.SelectedItem.ToString();
                 DateTime rentDate = DateTime.Now;
+
                 if (
                     !String.IsNullOrEmpty(selectedBoot) &&
                     !String.IsNullOrEmpty(startTime) &&
@@ -84,13 +84,16 @@ namespace Verhuur_van_speedboten
                     {
                         foreach (Verhuur verhuurden in bedrijf.verhuurden)
                         {
-                            //Check if 
+                            //Check if bootnummer is equal to selected bootnummer
                             if (verhuurden.bootnummer.ToString() == selectedBoot)
                             {
+                                DateTime Today = rentDate.Date; //Date only, without time!
+
                                 //Check if rented boat is already rented today
-                                if (verhuurden.verhuurDatum == rentDate)
+                                if (verhuurden.verhuurDatum.Date == Today)
                                 {
                                     MessageBox.Show("Deze boot is vandaag al verhuurd!");
+                                    break;
                                 }
                                 else
                                 {
@@ -102,6 +105,7 @@ namespace Verhuur_van_speedboten
                                     }
 
                                     addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
+                                    break;
                                 }
                             }
                             else
@@ -112,6 +116,7 @@ namespace Verhuur_van_speedboten
                                     setDamage(selectedBoot);
                                 }
                                 addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
+                                break;
                             }
                         }
                     }
@@ -156,29 +161,22 @@ namespace Verhuur_van_speedboten
 
         private void addRental (string selectedBoot, string startTime, string endTime, string usedLiters, DateTime rentDate)
         {
-            //selectedboot = put to int
-            //starttime = keep string
-            //endTime = keep string
-            //usedLiters = put to datetime
-            //rentDate = keep datetime
-
             int nummer = 0;
 
             //Get latest id from db and then lastId++
             string query = @"SELECT MAX(id) FROM verhuur";
 
             SqlDataReader dr = new SqlCommand(query, Database.openSqlConn()).ExecuteReader();
+
             while (dr.Read())
             {
                 if (dr.GetValue(0).ToString() != "")
                 {
                     nummer += int.Parse(dr.GetValue(0).ToString());
                 }
-                MessageBox.Show(dr.GetValue(0).ToString());
             }
 
-            MessageBox.Show(nummer.ToString());
-            //Add to list - 1
+            //Create new object verhuur
             Verhuur verhuur = new Verhuur(
                 nummer++,
                 int.Parse(selectedBoot),
@@ -205,7 +203,48 @@ namespace Verhuur_van_speedboten
 
             commando.ExecuteNonQuery();
 
+            verhuurd.Text = "Totaal verhuurd: ";
+            verhuurd.Text += bedrijf.verhuurden.Count.ToString(); //Om te kijken hoeveel verhuurden er zijn
+
             MessageBox.Show("Boot verhuurd");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Verhuur verhuurden in bedrijf.verhuurden)
+            {
+                //Loop over alle, zet de gene met hoogste double in een variabele, zet die boot nummer in een variabele
+                MessageBox.Show(verhuurden.berekenOmzet().ToString());
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (Verhuur verhuurden in bedrijf.verhuurden)
+            {
+                //Loop over alle, zet de gene met hoogste double in een variabele, zet die boot nummer in een variabele
+                MessageBox.Show(verhuurden.berekenVerhuurtijd().ToString());
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (Verhuur verhuurden in bedrijf.verhuurden)
+            {
+                //Loop over alle, zet de gene met hoogste double in een variabele, zet die boot nummer in een variabele
+                MessageBox.Show(verhuurden.berekenBrandstofverbruik().ToString());
+            }
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Verhuur_van_speedboten
 {
@@ -27,17 +32,41 @@ namespace Verhuur_van_speedboten
 
         public double berekenOmzet ()
         {
-            return 0.0;
+            //Get all data from boot with bootnummer = bootnummer
+            double omzet = 0.0;
+
+            string query = @"SELECT * FROM Speedboot";
+
+            SqlDataReader dr = new SqlCommand(query, Database.openSqlConn()).ExecuteReader();
+
+            while (dr.Read())
+            {
+                //Check if bootnummer from db is the same as this bootnummer
+                if (int.Parse(dr.GetValue(0).ToString()) == this.bootnummer)
+                {
+                    double huurprijs = double.Parse(dr.GetValue(4).ToString());
+
+                    omzet = huurprijs + (this.verbruikteLiters * 5);
+                    break;
+                }
+            }
+            
+            return omzet;
         }
 
         public double berekenBrandstofverbruik ()
         {
-            return 0.0;
+            //Brandstof verbruik = liters delen door totaal aantal minuten
+            return this.verbruikteLiters / this.berekenVerhuurtijd();
         }
 
-        public DateTime berekenVerhuurtijd ()
+        public double berekenVerhuurtijd ()
         {
-            return DateTime.Now;
+            //Totale verhuurtijd = tijdspanne tussen begin en eindtijd
+            TimeSpan tijdspan = this.eindtijd.Subtract(this.aanvangstijd);
+
+            //Geef tijdspanne terug in aantal minuten
+            return tijdspan.TotalMinutes;
         }
     }
 }

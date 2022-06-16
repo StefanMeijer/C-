@@ -103,8 +103,8 @@ namespace Verhuur_van_speedboten
                     Verhuur verhuur = new Verhuur(
                         int.Parse(dr.GetValue(0).ToString()),
                         int.Parse(dr.GetValue(1).ToString()),
-                        DateTime.ParseExact(dr.GetValue(2).ToString(), "HH:mm", null),
-                        DateTime.ParseExact(dr.GetValue(3).ToString(), "HH:mm", null),
+                        DateTime.Parse(dr.GetValue(2).ToString()),
+                        DateTime.Parse(dr.GetValue(3).ToString()),
                         int.Parse(dr.GetValue(4).ToString()),
                         DateTime.Parse(dr.GetValue(5).ToString())
                     );

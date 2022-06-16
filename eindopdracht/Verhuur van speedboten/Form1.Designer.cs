@@ -47,6 +47,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.verhuurd = new System.Windows.Forms.Label();
+            this.schadeComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.verhuurBootButton = new System.Windows.Forms.Button();
             this.eindtijd = new System.Windows.Forms.TextBox();
             this.aanvangstijd = new System.Windows.Forms.TextBox();
@@ -58,12 +61,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.botenComboLijst = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.beschikbareBoten = new System.Windows.Forms.Label();
             this.speedbotenlabel = new System.Windows.Forms.Label();
             this.headlabel1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.schadeComboBox = new System.Windows.Forms.ComboBox();
-            this.beschikbareBoten = new System.Windows.Forms.Label();
-            this.verhuurd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bedrijfBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -127,7 +127,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(188, 200);
+            this.label13.Location = new System.Drawing.Point(183, 165);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(27, 13);
             this.label13.TabIndex = 19;
@@ -136,7 +136,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(188, 171);
+            this.label12.Location = new System.Drawing.Point(183, 136);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(21, 13);
             this.label12.TabIndex = 18;
@@ -145,7 +145,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(188, 142);
+            this.label11.Location = new System.Drawing.Point(223, 107);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 13);
             this.label11.TabIndex = 17;
@@ -154,7 +154,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(188, 113);
+            this.label10.Location = new System.Drawing.Point(183, 78);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(34, 13);
             this.label10.TabIndex = 16;
@@ -163,7 +163,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(188, 84);
+            this.label9.Location = new System.Drawing.Point(183, 49);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(13, 13);
             this.label9.TabIndex = 15;
@@ -171,48 +171,53 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(8, 195);
+            this.button5.Location = new System.Drawing.Point(3, 160);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(174, 23);
             this.button5.TabIndex = 14;
             this.button5.Text = "Krijg kortst verhuurde boot";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(8, 166);
+            this.button4.Location = new System.Drawing.Point(3, 131);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(174, 23);
             this.button4.TabIndex = 13;
             this.button4.Text = "Krijg percentage schadeboten";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(8, 137);
+            this.button3.Location = new System.Drawing.Point(3, 102);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 23);
+            this.button3.Size = new System.Drawing.Size(214, 23);
             this.button3.TabIndex = 12;
             this.button3.Text = "Krijg boot met hoogste brandstof verbruik";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(8, 108);
+            this.button2.Location = new System.Drawing.Point(3, 73);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(174, 23);
             this.button2.TabIndex = 11;
             this.button2.Text = "Krijg totale verhuurtijd";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(8, 79);
+            this.button1.Location = new System.Drawing.Point(3, 44);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(174, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Krijg totale omzet";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -249,9 +254,40 @@
             this.tabPage2.Text = "Verhuur";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // verhuurd
+            // 
+            this.verhuurd.AutoSize = true;
+            this.verhuurd.BackColor = System.Drawing.Color.SkyBlue;
+            this.verhuurd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.verhuurd.Location = new System.Drawing.Point(106, 7);
+            this.verhuurd.Name = "verhuurd";
+            this.verhuurd.Size = new System.Drawing.Size(169, 24);
+            this.verhuurd.TabIndex = 23;
+            this.verhuurd.Text = "Totaal verhuurd: ";
+            // 
+            // schadeComboBox
+            // 
+            this.schadeComboBox.FormattingEnabled = true;
+            this.schadeComboBox.Items.AddRange(new object[] {
+            "true",
+            "false"});
+            this.schadeComboBox.Location = new System.Drawing.Point(3, 226);
+            this.schadeComboBox.Name = "schadeComboBox";
+            this.schadeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.schadeComboBox.TabIndex = 22;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(0, 210);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(169, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Heeft de boot schade opgelopen?";
+            // 
             // verhuurBootButton
             // 
-            this.verhuurBootButton.Location = new System.Drawing.Point(9, 253);
+            this.verhuurBootButton.Location = new System.Drawing.Point(3, 253);
             this.verhuurBootButton.Name = "verhuurBootButton";
             this.verhuurBootButton.Size = new System.Drawing.Size(100, 23);
             this.verhuurBootButton.TabIndex = 19;
@@ -261,14 +297,14 @@
             // 
             // eindtijd
             // 
-            this.eindtijd.Location = new System.Drawing.Point(7, 142);
+            this.eindtijd.Location = new System.Drawing.Point(3, 142);
             this.eindtijd.Name = "eindtijd";
             this.eindtijd.Size = new System.Drawing.Size(100, 20);
             this.eindtijd.TabIndex = 18;
             // 
             // aanvangstijd
             // 
-            this.aanvangstijd.Location = new System.Drawing.Point(6, 98);
+            this.aanvangstijd.Location = new System.Drawing.Point(3, 98);
             this.aanvangstijd.Name = "aanvangstijd";
             this.aanvangstijd.Size = new System.Drawing.Size(100, 20);
             this.aanvangstijd.TabIndex = 17;
@@ -276,7 +312,7 @@
             // 
             // verbruikteliters
             // 
-            this.verbruikteliters.Location = new System.Drawing.Point(9, 187);
+            this.verbruikteliters.Location = new System.Drawing.Point(3, 187);
             this.verbruikteliters.Name = "verbruikteliters";
             this.verbruikteliters.Size = new System.Drawing.Size(100, 20);
             this.verbruikteliters.TabIndex = 15;
@@ -284,7 +320,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 170);
+            this.label7.Location = new System.Drawing.Point(0, 171);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
             this.label7.TabIndex = 13;
@@ -293,7 +329,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 126);
+            this.label6.Location = new System.Drawing.Point(0, 126);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 11;
@@ -302,7 +338,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 82);
+            this.label5.Location = new System.Drawing.Point(0, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 9;
@@ -350,6 +386,17 @@
             this.tabPage3.Text = "Speedboot";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // beschikbareBoten
+            // 
+            this.beschikbareBoten.AutoSize = true;
+            this.beschikbareBoten.BackColor = System.Drawing.Color.SkyBlue;
+            this.beschikbareBoten.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beschikbareBoten.Location = new System.Drawing.Point(155, 7);
+            this.beschikbareBoten.Name = "beschikbareBoten";
+            this.beschikbareBoten.Size = new System.Drawing.Size(195, 24);
+            this.beschikbareBoten.TabIndex = 21;
+            this.beschikbareBoten.Text = "Boten beschikbaar: ";
+            // 
             // speedbotenlabel
             // 
             this.speedbotenlabel.AutoSize = true;
@@ -371,48 +418,6 @@
             this.headlabel1.Size = new System.Drawing.Size(146, 29);
             this.headlabel1.TabIndex = 0;
             this.headlabel1.Text = "Speedboten";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 210);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Heeft de boot schade opgelopen?";
-            // 
-            // schadeComboBox
-            // 
-            this.schadeComboBox.FormattingEnabled = true;
-            this.schadeComboBox.Items.AddRange(new object[] {
-            "true",
-            "false"});
-            this.schadeComboBox.Location = new System.Drawing.Point(10, 226);
-            this.schadeComboBox.Name = "schadeComboBox";
-            this.schadeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.schadeComboBox.TabIndex = 22;
-            // 
-            // beschikbareBoten
-            // 
-            this.beschikbareBoten.AutoSize = true;
-            this.beschikbareBoten.BackColor = System.Drawing.Color.SkyBlue;
-            this.beschikbareBoten.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beschikbareBoten.Location = new System.Drawing.Point(155, 7);
-            this.beschikbareBoten.Name = "beschikbareBoten";
-            this.beschikbareBoten.Size = new System.Drawing.Size(195, 24);
-            this.beschikbareBoten.TabIndex = 21;
-            this.beschikbareBoten.Text = "Boten beschikbaar: ";
-            // 
-            // verhuurd
-            // 
-            this.verhuurd.AutoSize = true;
-            this.verhuurd.BackColor = System.Drawing.Color.SkyBlue;
-            this.verhuurd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verhuurd.Location = new System.Drawing.Point(106, 7);
-            this.verhuurd.Name = "verhuurd";
-            this.verhuurd.Size = new System.Drawing.Size(169, 24);
-            this.verhuurd.TabIndex = 23;
-            this.verhuurd.Text = "Totaal verhuurd: ";
             // 
             // Form1
             // 
