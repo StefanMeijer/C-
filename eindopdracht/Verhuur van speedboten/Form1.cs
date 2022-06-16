@@ -1,4 +1,10 @@
-﻿using System;
+﻿//Stefan Meijer
+//16-6-2022
+//0.1
+//Een bedrijf verhuurt speedboten. Voor één bepaalde dag wordt elk van de tien aanwezige speedboten hoogstens 1 keer verhuurd. 
+//Rob Loves
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,25 +14,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Verhuur_van_speedboten
 {
     public partial class Form1 : Form
     {
         Bedrijf bedrijf = new Bedrijf(); //Maak een bedrijf aan
+        AboutBox1 a = new AboutBox1(); //Maak aboutbox aan
 
         public Form1()
         {
+            //Splashscreen
+            Thread t = new Thread(new ThreadStart(StartForm));
+            t.Start();
+            Thread.Sleep(5000);
             InitializeComponent();
+            t.Abort();
 
             loadSpeedbotenLabel();
             loadComboBox();
 
             bedrijfLabel.Text = bedrijf.naam; // Zet naam van het bedrijf in label
 
-
             beschikbareBoten.Text += bedrijf.speedboten.Count.ToString(); //Om te kijken hoeveel boten er in de list zitten
             verhuurd.Text += bedrijf.verhuurden.Count.ToString(); //Om te kijken hoeveel verhuurden er zijn
+
+            
+        }
+        public void StartForm()
+        {
+            Application.Run(new Splashscreen());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -236,6 +254,44 @@ namespace Verhuur_van_speedboten
         {
             Speedboot korsteVerhuurd = bedrijf.korsteVerhuurd();
             korstVerhuurdeLabel.Text = "Bootnummer: " + korsteVerhuurd.nummer.ToString();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.a.Show();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bedrijfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage1);
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void verhuurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage2);
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void speedbotenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage3);
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

@@ -11,3 +11,5 @@ C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuu
 C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur van speedboten.pdb
 C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\bootverhuur.mdf
 C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bin\Debug\bootverhuur_log.ldf
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur_van_speedboten.Splashscreen.resources
+C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\obj\Debug\Verhuur_van_speedboten.AboutBox1.resources

@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bedrijfBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseDataSet = new Verhuur_van_speedboten.DatabaseDataSet();
-            this.bedrijfTableAdapter = new Verhuur_van_speedboten.DatabaseDataSetTableAdapters.BedrijfTableAdapter();
-            this.tableAdapterManager = new Verhuur_van_speedboten.DatabaseDataSetTableAdapters.TableAdapterManager();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bedrijfLabel = new System.Windows.Forms.Label();
             this.korstVerhuurdeLabel = new System.Windows.Forms.Label();
             this.percentageSchadeLabel = new System.Windows.Forms.Label();
             this.hoogstebrandstofLabel = new System.Windows.Forms.Label();
@@ -64,11 +68,21 @@
             this.beschikbareBoten = new System.Windows.Forms.Label();
             this.speedbotenlabel = new System.Windows.Forms.Label();
             this.headlabel1 = new System.Windows.Forms.Label();
-            this.bedrijfLabel = new System.Windows.Forms.Label();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bedrijfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verhuurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speedbotenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bedrijfTableAdapter = new Verhuur_van_speedboten.DatabaseDataSetTableAdapters.BedrijfTableAdapter();
+            this.tableAdapterManager = new Verhuur_van_speedboten.DatabaseDataSetTableAdapters.TableAdapterManager();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bedrijfBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
@@ -83,16 +97,6 @@
             this.databaseDataSet.DataSetName = "DatabaseDataSet";
             this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // bedrijfTableAdapter
-            // 
-            this.bedrijfTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.BedrijfTableAdapter = this.bedrijfTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Verhuur_van_speedboten.DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -106,6 +110,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.ContextMenuStrip = this.contextMenuStrip;
             this.tabPage1.Controls.Add(this.bedrijfLabel);
             this.tabPage1.Controls.Add(this.korstVerhuurdeLabel);
             this.tabPage1.Controls.Add(this.percentageSchadeLabel);
@@ -125,6 +130,48 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bedrijf";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox2,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(144, 92);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenuItem1.Text = "About";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenuItem4.Text = "Open";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(143, 22);
+            this.toolStripMenuItem5.Text = "Close";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // bedrijfLabel
+            // 
+            this.bedrijfLabel.AutoSize = true;
+            this.bedrijfLabel.BackColor = System.Drawing.Color.SkyBlue;
+            this.bedrijfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bedrijfLabel.Location = new System.Drawing.Point(92, 7);
+            this.bedrijfLabel.Name = "bedrijfLabel";
+            this.bedrijfLabel.Size = new System.Drawing.Size(130, 24);
+            this.bedrijfLabel.TabIndex = 24;
+            this.bedrijfLabel.Text = "Bedrijfsnaam";
             // 
             // korstVerhuurdeLabel
             // 
@@ -421,16 +468,70 @@
             this.headlabel1.TabIndex = 0;
             this.headlabel1.Text = "Speedboten";
             // 
-            // bedrijfLabel
+            // toolStripComboBox1
             // 
-            this.bedrijfLabel.AutoSize = true;
-            this.bedrijfLabel.BackColor = System.Drawing.Color.SkyBlue;
-            this.bedrijfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bedrijfLabel.Location = new System.Drawing.Point(92, 7);
-            this.bedrijfLabel.Name = "bedrijfLabel";
-            this.bedrijfLabel.Size = new System.Drawing.Size(130, 24);
-            this.bedrijfLabel.TabIndex = 24;
-            this.bedrijfLabel.Text = "Bedrijfsnaam";
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem2.Text = "Open";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem3.Text = "Close";
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bedrijfToolStripMenuItem,
+            this.verhuurToolStripMenuItem,
+            this.speedbotenToolStripMenuItem});
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(143, 22);
+            this.toolStripComboBox2.Text = "Open tabblat";
+            // 
+            // bedrijfToolStripMenuItem
+            // 
+            this.bedrijfToolStripMenuItem.Name = "bedrijfToolStripMenuItem";
+            this.bedrijfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bedrijfToolStripMenuItem.Text = "Bedrijf";
+            this.bedrijfToolStripMenuItem.Click += new System.EventHandler(this.bedrijfToolStripMenuItem_Click);
+            // 
+            // verhuurToolStripMenuItem
+            // 
+            this.verhuurToolStripMenuItem.Name = "verhuurToolStripMenuItem";
+            this.verhuurToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verhuurToolStripMenuItem.Text = "Verhuur";
+            this.verhuurToolStripMenuItem.Click += new System.EventHandler(this.verhuurToolStripMenuItem_Click);
+            // 
+            // speedbotenToolStripMenuItem
+            // 
+            this.speedbotenToolStripMenuItem.Name = "speedbotenToolStripMenuItem";
+            this.speedbotenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.speedbotenToolStripMenuItem.Text = "Speedboten";
+            this.speedbotenToolStripMenuItem.Click += new System.EventHandler(this.speedbotenToolStripMenuItem_Click);
+            // 
+            // bedrijfTableAdapter
+            // 
+            this.bedrijfTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BedrijfTableAdapter = this.bedrijfTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Verhuur_van_speedboten.DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Speedbootverhuur";
+            this.notifyIcon1.Visible = true;
             // 
             // Form1
             // 
@@ -438,14 +539,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Speedboten verhuur";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bedrijfBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -458,8 +561,6 @@
 
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource bedrijfBindingSource;
-        private DatabaseDataSetTableAdapters.BedrijfTableAdapter bedrijfTableAdapter;
-        private DatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -492,6 +593,20 @@
         private System.Windows.Forms.Label verhuurd;
         private System.Windows.Forms.Label beschikbareBoten;
         private System.Windows.Forms.Label bedrijfLabel;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripComboBox2;
+        private System.Windows.Forms.ToolStripMenuItem bedrijfToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verhuurToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem speedbotenToolStripMenuItem;
+        private DatabaseDataSetTableAdapters.BedrijfTableAdapter bedrijfTableAdapter;
+        private DatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

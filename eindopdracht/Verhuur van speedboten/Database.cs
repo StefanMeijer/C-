@@ -1,4 +1,10 @@
-﻿using System;
+﻿//Stefan Meijer
+//16-6-2022
+//0.1
+//Een bedrijf verhuurt speedboten. Voor één bepaalde dag wordt elk van de tien aanwezige speedboten hoogstens 1 keer verhuurd. 
+//Rob Loves
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,15 +21,6 @@ namespace Verhuur_van_speedboten
             SqlConnection conn = new SqlConnection (@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\stefa\source\repos\eindopdracht\Verhuur van speedboten\bootverhuur.mdf;Integrated Security=True");
             conn.Open ();
             return conn;
-        }
-
-        public static DataSet selectDataFromDb (string query)
-        {
-            DataSet ds = new DataSet ();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, openSqlConn());
-
-            sqlDataAdapter.Fill (ds);
-            return ds;
         }
     }
 }
