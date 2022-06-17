@@ -107,59 +107,64 @@ namespace Verhuur_van_speedboten
                     TimeSpan.TryParse(endTime, out checkTimeSpan) //check if valid format HH:mm
                     )
                 {
-                    if (bedrijf.verhuurden.Count > 0)
+                    if (DateTime.ParseExact(startTime, "HH:mm", null) < DateTime.ParseExact(endTime, "HH:mm", null))
                     {
-                        int i = 0;
-                        foreach (Verhuur verhuurden in bedrijf.verhuurden)
+                        if (bedrijf.verhuurden.Count > 0)
                         {
-                            
-                            //Check if bootnummer is equal to selected bootnummer
-                            if (verhuurden.bootnummer.ToString() == selectedBoot)
+                            int i = 0;
+                            foreach (Verhuur verhuurden in bedrijf.verhuurden)
                             {
-                                DateTime Today = rentDate.Date; //Date only, without time!
 
-                                //Check if rented boat is already rented today
-                                if (verhuurden.verhuurDatum.Date == Today)
+                                //Check if bootnummer is equal to selected bootnummer
+                                if (verhuurden.bootnummer.ToString() == selectedBoot)
                                 {
-                                    MessageBox.Show("Deze boot is vandaag al verhuurd!");
-                                    break;
+                                    DateTime Today = rentDate.Date; //Date only, without time!
+
+                                    //Check if rented boat is already rented today
+                                    if (verhuurden.verhuurDatum.Date == Today)
+                                    {
+                                        MessageBox.Show("Deze boot is vandaag al verhuurd!");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        if (schade == "true")
+                                        {
+                                            setDamage(selectedBoot);
+                                        }
+
+                                        addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
+                                        break;
+                                    }
                                 }
                                 else
                                 {
-                                    if (schade == "true")
+                                    i++;
+                                    //Check if loop been through all object in verhuurden list
+                                    if (i > bedrijf.verhuurden.Count)
                                     {
-                                        setDamage(selectedBoot);
-                                    }
+                                        if (schade == "true")
+                                        {
+                                            setDamage(selectedBoot);
+                                        }
 
-                                    addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
-                                    break;
-                                }
-                            } else
-                            {
-                                i++;
-                                //Check if loop been through all object in verhuurden list
-                                if (i > bedrijf.verhuurden.Count)
-                                {
-                                    if (schade == "true")
-                                    {
-                                        setDamage(selectedBoot);
+                                        addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
+                                        break;
                                     }
-
-                                    addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
-                                    break;
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-
-                        MessageBox.Show("als je hier komt dan is er seirue wat mis"); //test showbox
-                        if (schade == "true")
+                        else
                         {
-                            setDamage(selectedBoot);
+                            if (schade == "true")
+                            {
+                                setDamage(selectedBoot);
+                            }
+                            addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
                         }
-                        addRental(selectedBoot, startTime, endTime, usedLiters, rentDate);
+                    } else
+                    {
+                        MessageBox.Show("Startijd mag niet later zijn dan eindtijd");
                     }
                 }
                 else
