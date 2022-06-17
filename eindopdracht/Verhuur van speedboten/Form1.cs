@@ -141,7 +141,7 @@ namespace Verhuur_van_speedboten
                                 {
                                     i++;
                                     //Check if loop been through all object in verhuurden list
-                                    if (i > bedrijf.verhuurden.Count)
+                                    if (i == bedrijf.verhuurden.Count)
                                     {
                                         if (schade == "true")
                                         {
